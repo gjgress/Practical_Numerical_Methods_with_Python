@@ -112,9 +112,11 @@ while u[N,0]>0 or N<10:
     N = N + 1
     
 
-T = (N-1)*dt
+T = (N)*dt
 T = math.floor(T*100)/100.0
 t = numpy.arange(0,T+dt,dt)
+
+
 
 # Plot the path of the rocket.
 pyplot.figure(figsize=(T+2, numpy.amax(u[:,0])+10))
@@ -123,9 +125,6 @@ pyplot.xlabel('t')
 pyplot.ylabel('h')
 pyplot.grid()
 pyplot.plot(t, u[:,0], color='C0', linestyle='-', linewidth=2)
-
-print(T)
-print(u[:,0].shape)
 
 print("Maximum speed is:" + str(numpy.amax(u[:,1])))
 print("The time value that the maximum speed occurs is:" + str(float(numpy.where(u[:,1]==numpy.amax(u[:,1]))[0])*dt))
