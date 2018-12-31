@@ -1,7 +1,15 @@
 import numpy
 from matplotlib import pyplot
+import sympy
 
-p = 7
-r = 4.7
+sympy.init_printing()
 
-print(numpy.sin(p/r)**3)
+x = sympy.symbols('x')
+
+func = (sympy.cos(x)**2 * sympy.sin(x)**3)/(4*x**5 * sympy.exp(x))
+
+funcprime = func.diff(x)
+
+funcderv = sympy.lambdify((x), funcprime)
+
+print(funcderv(2.2))
